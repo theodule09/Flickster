@@ -65,6 +65,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         //load image with glide
         Glide.with(context)
                 .load(imageURL)
+                //.bitmapTransform(new RoundedCornersTransformation(context, 20, 0))
+                //.transform(new RoundedCornersTransformation(25, 0))
                 .into(viewHolder.ivPosterImage);
 
 
