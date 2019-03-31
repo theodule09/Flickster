@@ -8,6 +8,8 @@ public class Config {
     // The base url for loading images and the poster size for the image
     String imageBaseURL;
     String posterSize; // the postersize of the images, part of the url
+    //backdrop size for landscape mode
+    String backdropSize;
 
 
     public Config(JSONObject object) throws JSONException {
@@ -18,6 +20,10 @@ public class Config {
         //Get the poster size
         JSONArray posterSizeOptions = images.getJSONArray("poster_sizes");
         posterSize = posterSizeOptions.optString(3, "w342");
+
+        //Parse the backdrop size  or use w780 as fallback
+        JSONArray backropsizeOption = images.getJSONArray("backdrop_sizes");
+        backdropSize = backropsizeOption.optString(1, "w780");
     }
 
     //Helper method to generate imageURL
@@ -32,5 +38,9 @@ public class Config {
 
     public String getPosterSize() {
         return posterSize;
+    }
+
+    public String getBackdropSize() {
+        return backdropSize;
     }
 }
